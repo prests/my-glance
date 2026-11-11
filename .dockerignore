@@ -1,0 +1,9 @@
+.git
+.github
+.env*
+.deploy
+PLAN.md
+docs
+README.md
+feeds
+scripts

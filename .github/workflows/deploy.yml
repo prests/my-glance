@@ -1,0 +1,87 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  attestations: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      attestations: read
+      id-token: write
+    env:
+      IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      GLANCE_AUTH_USERNAME: ${{ secrets.GLANCE_AUTH_USERNAME }}
+      GLANCE_AUTH_PASSWORD_HASH: ${{ secrets.GLANCE_AUTH_PASSWORD_HASH }}
+      GLANCE_AUTH_SECRET_KEY: ${{ secrets.GLANCE_AUTH_SECRET_KEY }}
+      CLOUDFLARE_TUNNEL_TOKEN: ${{ secrets.CLOUDFLARE_TUNNEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Verify the selected branch tip has an attested image
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh attestation verify "oci://${IMAGE}" --repo "$GITHUB_REPOSITORY"
+          digest="$(docker buildx imagetools inspect "$IMAGE" --format '{{.Digest}}')"
+          test -n "$digest"
+          printf 'GLANCE_IMAGE=%s@%s\n' "${IMAGE%%:*}" "$digest" >> "$GITHUB_ENV"
+
+      - name: Configure deployment SSH
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' '${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}' > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' '${{ secrets.DEPLOY_SSH_KNOWN_HOSTS }}' > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Copy deployment configuration
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" 'mkdir -p ~/glance/config'
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes \
+            compose.yaml compose.production.yaml \
+            "$DEPLOY_USER@$DEPLOY_HOST:~/glance/"
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes \
+            config/nginx.conf \
+            "$DEPLOY_USER@$DEPLOY_HOST:~/glance/config/nginx.conf"
+
+      - name: Deploy the existing immutable image
+        run: |
+          {
+            printf 'export GLANCE_IMAGE=%q\n' "$GLANCE_IMAGE"
+            printf 'export GLANCE_AUTH_USERNAME=%q\n' "$GLANCE_AUTH_USERNAME"
+            printf 'export GLANCE_AUTH_PASSWORD_HASH=%q\n' "$GLANCE_AUTH_PASSWORD_HASH"
+            printf 'export GLANCE_AUTH_SECRET_KEY=%q\n' "$GLANCE_AUTH_SECRET_KEY"
+            printf 'export CLOUDFLARE_TUNNEL_TOKEN=%q\n' "$CLOUDFLARE_TUNNEL_TOKEN"
+            cat <<'REMOTE'
+          set -euo pipefail
+          cd ~/glance
+          previous_image="$(docker compose -p glance -f compose.yaml -f compose.production.yaml ps -q glance | xargs -r docker inspect --format '{{.Config.Image}}' 2>/dev/null || true)"
+          docker compose -p glance -f compose.yaml -f compose.production.yaml pull
+          docker compose -p glance -f compose.yaml -f compose.production.yaml up -d --no-build --remove-orphans
+
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8080/healthz >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          if [ -n "$previous_image" ]; then
+            export GLANCE_IMAGE="$previous_image"
+            docker compose -p glance -f compose.yaml -f compose.production.yaml up -d --no-build --remove-orphans
+          fi
+          docker compose -p glance -f compose.yaml -f compose.production.yaml logs
+          exit 1
+          REMOTE
+          } | ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" 'bash -se'

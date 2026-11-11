@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "my-glance-workspace",
+  "description": "Workspace commands for My Glance",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.5.2",
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "scripts": {
+    "____ RUN COMMANDS ____": "",
+    "dev": "pnpm run --parallel dev",
+    "____ VALIDATION COMMANDS ____": "",
+    "format": "prettier --write .",
+    "format:verify": "prettier --check .",
+    "____ CLEANUP COMMANDS ____": "",
+    "clean:modules": "rimraf --glob '**/node_modules'",
+    "____ LIFECYCLE COMMANDS ____": "",
+    "postinstall": "pnpm run postinstall:setup-git-hooks",
+    "postinstall:setup-git-hooks": "git config core.hooksPath ./git-hooks"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^2.38.0",
+    "@prettier/plugin-xml": "^3.4.2",
+    "cross-env": "^10.1.0",
+    "prettier": "^3.7.4",
+    "prettier-plugin-nginx": "^2.0.0",
+    "prettier-plugin-sh": "^0.20.2",
+    "rimraf": "^6.1.2",
+    "varlock": "^1.13.0"
+  }
+}

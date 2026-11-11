@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "@prettier/plugin-xml",
+    "prettier-plugin-nginx",
+    "prettier-plugin-sh"
+  ],
+  "overrides": [
+    {
+      "files": "*.opml",
+      "options": {
+        "parser": "xml"
+      }
+    }
+  ]
+}

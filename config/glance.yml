@@ -1,0 +1,447 @@
+# Nord Newsroom — Glance starter configuration
+# 5 pages, curated political perspectives, engineering, AI, home automation, science, crops and energy.
+# Import into Glance, or try with the unofficial Glance Chrome new-tab extension.
+# Some feeds may block third-party readers or require a refresh.
+
+server:
+  proxied: true
+
+auth:
+  secret-key: ${secret:glance_auth_secret_key}
+  users:
+    ${secret:glance_auth_username}:
+      password-hash: ${secret:glance_auth_password_hash}
+
+branding:
+  logo-text: S
+  app-name: My Glance
+  hide-footer: true
+theme:
+  background-color: 220 16 22
+  primary-color: 193 44 67
+  positive-color: 92 28 65
+  negative-color: 354 42 57
+  contrast-multiplier: 1.2
+  presets:
+    nord-light:
+      light: true
+      background-color: 218 27 94
+      primary-color: 213 30 52
+      positive-color: 92 25 40
+      negative-color: 354 43 50
+pages:
+  - name: Today
+    head-widgets:
+      - type: search
+        search-engine: duckduckgo
+        autofocus: false
+      - type: rss
+        title: Headlines across perspectives
+        style: horizontal-cards
+        limit: 12
+        collapse-after: 8
+        cache: 1h
+        feeds:
+          - url: https://feeds.bbci.co.uk/news/world/rss.xml
+            title: BBC World
+            limit: 3
+          - url: https://flipboard.com/@associatedpress/top-stories-u7govdf1z.rss
+            title: Associated Press (via Flipboard)
+            limit: 3
+          - url: https://www.theguardian.com/us-news/rss
+            title: Guardian US
+            limit: 3
+          - url: https://www.nationalreview.com/feed/
+            title: National Review
+            limit: 3
+          - url: https://grist.org/feed/
+            title: Grist
+            limit: 3
+          - url: https://www.quantamagazine.org/feed/
+            title: Quanta Magazine
+            limit: 3
+    columns:
+      - size: small
+        widgets:
+          - type: calendar
+            first-day-of-week: monday
+          - type: rss
+            title: World briefing
+            style: vertical-list
+            limit: 9
+            collapse-after: 5
+            cache: 1h
+            feeds:
+              - url: https://feeds.bbci.co.uk/news/world/rss.xml
+                title: BBC World
+                limit: 3
+              - url: https://flipboard.com/@associatedpress/top-stories-u7govdf1z.rss
+                title: Associated Press (via Flipboard)
+                limit: 3
+              - url: https://news.google.com/rss/search?q=when:24h+site:reuters.com&hl=en-US&gl=US&ceid=US:en
+                title: Reuters (via Google News)
+                limit: 3
+      - size: full
+        widgets:
+          - type: rss
+            title: Engineering + AI
+            style: detailed-list
+            limit: 12
+            collapse-after: 6
+            cache: 1h
+            feeds:
+              - url: https://tldr.tech/api/rss/tech
+                title: TLDR Tech
+                limit: 3
+              - url: https://tldr.tech/api/rss/webdev
+                title: TLDR Web Dev
+                limit: 3
+              - url: https://tldr.tech/api/rss/ai
+                title: TLDR AI
+                limit: 3
+              - url: https://simonwillison.net/atom/everything/
+                title: Simon Willison
+                limit: 3
+          - type: rss
+            title: Science + climate
+            style: horizontal-cards
+            limit: 12
+            collapse-after: 6
+            cache: 1h
+            feeds:
+              - url: https://www.quantamagazine.org/feed/
+                title: Quanta Magazine
+                limit: 3
+              - url: https://www.sciencedaily.com/rss/top/science.xml
+                title: "ScienceDaily: Top Science"
+                limit: 3
+              - url: https://e360.yale.edu/feed.xml
+                title: Yale Environment 360
+                limit: 3
+              - url: https://news.mongabay.com/feed/
+                title: Mongabay
+                limit: 3
+      - size: small
+        widgets:
+          - type: rss
+            title: Smart home
+            style: vertical-list
+            limit: 9
+            collapse-after: 5
+            cache: 1h
+            feeds:
+              - url: https://www.home-assistant.io/atom.xml
+                title: Home Assistant Blog
+                limit: 3
+              - url: https://smarthomescene.com/feed/
+                title: SmartHomeScene
+                limit: 3
+              - url: https://selfh.st/rss/
+                title: selfh.st
+                limit: 3
+          - type: rss
+            title: Off-grid + growing
+            style: vertical-list
+            limit: 9
+            collapse-after: 5
+            cache: 1h
+            feeds:
+              - url: https://solar.lowtechmagazine.com/feeds/all.rss.xml
+                title: Low-tech Magazine
+                limit: 3
+              - url: https://practicalselfreliance.com/feed/
+                title: Practical Self Reliance
+                limit: 3
+              - url: https://www.epicgardening.com/feed/
+                title: Epic Gardening
+                limit: 3
+  - name: Perspectives
+    columns:
+      - size: small
+        widgets:
+          - type: rss
+            title: Left / progressive
+            style: vertical-list
+            limit: 18
+            collapse-after: 8
+            cache: 1h
+            feeds:
+              - url: https://www.theguardian.com/us-news/rss
+                title: Guardian US
+                limit: 3
+              - url: https://www.democracynow.org/democracynow.rss
+                title: Democracy Now!
+                limit: 3
+              - url: https://www.motherjones.com/feed/
+                title: Mother Jones
+                limit: 3
+      - size: full
+        widgets:
+          - type: rss
+            title: General / international reporting
+            style: detailed-list
+            limit: 24
+            collapse-after: 12
+            cache: 1h
+            feeds:
+              - url: https://feeds.bbci.co.uk/news/world/rss.xml
+                title: BBC World
+                limit: 3
+              - url: https://flipboard.com/@associatedpress/top-stories-u7govdf1z.rss
+                title: Associated Press (via Flipboard)
+                limit: 3
+              - url: https://news.google.com/rss/search?q=when:24h+site:reuters.com&hl=en-US&gl=US&ceid=US:en
+                title: Reuters (via Google News)
+                limit: 3
+      - size: small
+        widgets:
+          - type: rss
+            title: Conservative / right
+            style: vertical-list
+            limit: 20
+            collapse-after: 8
+            cache: 1h
+            feeds:
+              - url: https://www.nationalreview.com/feed/
+                title: National Review
+                limit: 3
+              - url: https://thedispatch.com/feed/
+                title: The Dispatch
+                limit: 3
+              - url: https://moxie.foxnews.com/google-publisher/politics.xml
+                title: Fox News Politics
+                limit: 3
+              - url: https://www.thebulwark.com/feed
+                title: The Bulwark (center-right / anti-Trump)
+                limit: 3
+  - name: Code + AI
+    columns:
+      - size: small
+        widgets:
+          - type: rss
+            title: Home automation
+            style: vertical-list
+            limit: 15
+            collapse-after: 8
+            cache: 1h
+            feeds:
+              - url: https://www.home-assistant.io/atom.xml
+                title: Home Assistant Blog
+                limit: 3
+              - url: https://smarthomescene.com/feed/
+                title: SmartHomeScene
+                limit: 3
+              - url: https://selfh.st/rss/
+                title: selfh.st
+                limit: 3
+              - url: https://github.com/Koenkk/zigbee2mqtt/releases.atom
+                title: Zigbee2MQTT releases
+                limit: 3
+              - url: https://github.com/home-assistant/core/releases.atom
+                title: Home Assistant core releases
+                limit: 3
+      - size: full
+        widgets:
+          - type: rss
+            title: Coding / engineering
+            style: detailed-list
+            limit: 24
+            collapse-after: 11
+            cache: 1h
+            feeds:
+              - url: https://tldr.tech/api/rss/tech
+                title: TLDR Tech
+                limit: 3
+              - url: https://tldr.tech/api/rss/webdev
+                title: TLDR Web Dev
+                limit: 3
+              - url: https://tldr.tech/api/rss/devops
+                title: TLDR DevOps
+                limit: 3
+              - url: https://lobste.rs/t/go.rss
+                title: Lobsters Go
+                limit: 3
+              - url: https://news.ycombinator.com/rss
+                title: Hacker News
+                limit: 3
+              - url: https://feeds.arstechnica.com/arstechnica/index
+                title: Ars Technica
+                limit: 3
+          - type: rss
+            title: Electronics + DIY
+            style: horizontal-cards
+            limit: 8
+            collapse-after: 6
+            cache: 1h
+            feeds:
+              - url: https://hackaday.com/blog/feed/
+                title: Hackaday
+                limit: 3
+              - url: https://selfh.st/rss/
+                title: selfh.st
+                limit: 3
+      - size: small
+        widgets:
+          - type: rss
+            title: AI developments
+            style: vertical-list
+            limit: 20
+            collapse-after: 9
+            cache: 1h
+            feeds:
+              - url: https://tldr.tech/api/rss/ai
+                title: TLDR AI
+                limit: 3
+              - url: https://simonwillison.net/atom/everything/
+                title: Simon Willison
+                limit: 3
+              - url: https://www.technologyreview.com/topic/artificial-intelligence/feed/
+                title: MIT Technology Review AI
+                limit: 3
+              - url: https://openai.com/news/rss.xml
+                title: OpenAI News
+                limit: 3
+              - url: https://deepmind.google/blog/rss.xml
+                title: Google DeepMind
+                limit: 3
+  - name: Science + Earth
+    columns:
+      - size: small
+        widgets:
+          - type: rss
+            title: Environmental reporting
+            style: vertical-list
+            limit: 16
+            collapse-after: 8
+            cache: 1h
+            feeds:
+              - url: https://grist.org/feed/
+                title: Grist
+                limit: 3
+              - url: https://insideclimatenews.org/feed/
+                title: Inside Climate News
+                limit: 3
+              - url: https://e360.yale.edu/feed.xml
+                title: Yale Environment 360
+                limit: 3
+      - size: full
+        widgets:
+          - type: rss
+            title: Scientific discoveries
+            style: detailed-list
+            limit: 20
+            collapse-after: 10
+            cache: 1h
+            feeds:
+              - url: https://www.sciencedaily.com/rss/top/science.xml
+                title: "ScienceDaily: Top Science"
+                limit: 3
+              - url: https://www.quantamagazine.org/feed/
+                title: Quanta Magazine
+                limit: 3
+          - type: rss
+            title: Environment + wildlife
+            style: horizontal-cards
+            limit: 12
+            collapse-after: 6
+            cache: 1h
+            feeds:
+              - url: https://news.mongabay.com/feed/
+                title: Mongabay
+                limit: 3
+              - url: https://grist.org/feed/
+                title: Grist
+                limit: 3
+              - url: https://e360.yale.edu/feed.xml
+                title: Yale Environment 360
+                limit: 3
+      - size: small
+        widgets:
+          - type: rss
+            title: Conservation + energy
+            style: vertical-list
+            limit: 15
+            collapse-after: 7
+            cache: 1h
+            feeds:
+              - url: https://news.mongabay.com/feed/
+                title: Mongabay
+                limit: 3
+              - url: https://insideclimatenews.org/feed/
+                title: Inside Climate News
+                limit: 3
+              - url: https://pv-magazine-usa.com/feed/
+                title: pv magazine USA
+                limit: 3
+  - name: Off Grid + Crops
+    columns:
+      - size: small
+        widgets:
+          - type: rss
+            title: Grow your food
+            style: vertical-list
+            limit: 18
+            collapse-after: 8
+            cache: 1h
+            feeds:
+              - url: https://www.epicgardening.com/feed/
+                title: Epic Gardening
+                limit: 3
+              - url: https://gardenerspath.com/feed/
+                title: Gardener’s Path
+                limit: 3
+              - url: https://homesteadandchill.com/feed/
+                title: Homestead and Chill
+                limit: 3
+      - size: full
+        widgets:
+          - type: rss
+            title: Energy + off-grid technology
+            style: detailed-list
+            limit: 24
+            collapse-after: 12
+            cache: 1h
+            feeds:
+              - url: https://solar.lowtechmagazine.com/feeds/all.rss.xml
+                title: Low-tech Magazine
+                limit: 3
+              - url: https://pv-magazine-usa.com/feed/
+                title: pv magazine USA
+                limit: 3
+              - url: https://www.solarpowerworldonline.com/feed/
+                title: Solar Power World
+                limit: 3
+              - url: https://offgridworld.com/feed/
+                title: Off Grid World
+                limit: 3
+          - type: rss
+            title: Practical homesteading
+            style: horizontal-cards
+            limit: 12
+            collapse-after: 6
+            cache: 1h
+            feeds:
+              - url: https://practicalselfreliance.com/feed/
+                title: Practical Self Reliance
+                limit: 3
+              - url: https://www.backwoodshome.com/feed/
+                title: Backwoods Home
+                limit: 3
+      - size: small
+        widgets:
+          - type: rss
+            title: Preparedness + resilience
+            style: vertical-list
+            limit: 18
+            collapse-after: 9
+            cache: 1h
+            feeds:
+              - url: https://practicalselfreliance.com/feed/
+                title: Practical Self Reliance
+                limit: 3
+              - url: https://www.backwoodshome.com/feed/
+                title: Backwoods Home
+                limit: 3
+              - url: https://survivalblog.com/feed/
+                title: SurvivalBlog
+                limit: 3

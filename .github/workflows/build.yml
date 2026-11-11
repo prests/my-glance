@@ -1,0 +1,87 @@
+name: Build image
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    env:
+      GLANCE_IMAGE: prests/my-glance:ci
+      GLANCE_AUTH_USERNAME: ci-user
+      GLANCE_AUTH_PASSWORD_HASH: $2a$10$o6SXqiccI3DDP2dN4ADumuOeIHET6Q4bUMYZD6rT2Aqt6XQ3DyO.6 # These are fake for testing
+      GLANCE_AUTH_SECRET_KEY: /yQ8lM5V32D3XfxmQrPqqCuTHVZG9Hidib4/2e61gOJUbim77ZbzE+36ACnfwBIdHgqjg5Qdl7sjHXcjRgfJ+A== # These are fake for testing
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.5.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: pnpm
+      - name: Install formatting dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check formatting
+        run: pnpm run format:verify
+
+      - name: Validate Compose configuration
+        run: docker compose -f compose.yaml config --quiet
+
+      - name: Build AMD64 test image
+        run: docker buildx build --platform linux/amd64 --load --tag "$GLANCE_IMAGE" .
+
+      - name: Start the AMD64 stack
+        run: |
+          docker compose -p glance-ci up --no-build --detach
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8080/healthz >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          docker compose -p glance-ci logs
+          exit 1
+
+      - name: Stop test stack
+        if: always()
+        run: docker compose -p glance-ci down --volumes --remove-orphans
+
+      - name: Log in to GHCR
+        if: github.event_name == 'push'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and publish the branch commit image
+        id: publish
+        if: github.event_name == 'push'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Attest published image provenance
+        if: github.event_name == 'push'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
+          subject-digest: ${{ steps.publish.outputs.digest }}
+          push-to-registry: true

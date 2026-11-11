@@ -1,0 +1,5 @@
+.env
+.env.*
+!.env.schema
+.deploy/
+node_modules/

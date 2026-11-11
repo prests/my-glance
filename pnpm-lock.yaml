@@ -1,0 +1,536 @@
+lockfileVersion: "9.0"
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+  .:
+    devDependencies:
+      "@dotenvx/dotenvx":
+        specifier: ^2.38.0
+        version: 2.38.2
+      "@prettier/plugin-xml":
+        specifier: ^3.4.2
+        version: 3.4.2(prettier@3.10.0)
+      cross-env:
+        specifier: ^10.1.0
+        version: 10.1.0
+      prettier:
+        specifier: ^3.7.4
+        version: 3.10.0
+      prettier-plugin-nginx:
+        specifier: ^2.0.0
+        version: 2.0.0(prettier@3.10.0)
+      prettier-plugin-sh:
+        specifier: ^0.20.2
+        version: 0.20.2(prettier@3.10.0)
+      rimraf:
+        specifier: ^6.1.2
+        version: 6.1.4
+      varlock:
+        specifier: ^1.13.0
+        version: 1.24.0
+
+packages:
+  "@dotenvx/dotenvx@2.38.2":
+    resolution:
+      {
+        integrity: sha512-+tjy8o//H+ZkRfRWLh08UkLHCw/e74uIV27QOZ3RxKwXvGrxjEcQMfUvQJzkvK/qNTk/OsE1MlGiDB6iL+1X0g==,
+      }
+    hasBin: true
+
+  "@dotenvx/primitives@3.3.1":
+    resolution:
+      {
+        integrity: sha512-ykX29rVnHwwV6m3AMmvR+niFSwhOG2TYttJjURz3n/3iHtpWC8gEptojYY+eHgBAV4fkaGRM1Rf0wgQ6/DeUYQ==,
+      }
+
+  "@dotenvx/primitives@4.4.0":
+    resolution:
+      {
+        integrity: sha512-swvcX4CxhlgE5G56r6pHYg7LgiKvBZ+cHz/2zk/AyrBxm6eig//oMYnK9IgQ8Jds9DSKIJ88G8RvvANgx7Qv0Q==,
+      }
+
+  "@dotenvx/providers@0.3.13":
+    resolution:
+      {
+        integrity: sha512-fF39zRYFyukQtjZJ8VyrAl6zsZo7t20ZD55QK+yN7VPS5gmEVHoIHwzNZGQHJDNA5A3evWiGM6547egI/sWahQ==,
+      }
+
+  "@dotenvx/tooling@1.0.6":
+    resolution:
+      {
+        integrity: sha512-d1AhKqlprzjR7+/7YTYbf9lTjeIUxr2WN+gYL5jf9O25wymlVWzuwOujq9IWJOt33sGWcLjr1eswSOmqm4SRMg==,
+      }
+
+  "@epic-web/invariant@1.0.0":
+    resolution:
+      {
+        integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==,
+      }
+
+  "@isaacs/nonrecursive-glob-match@1.1.0":
+    resolution:
+      {
+        integrity: sha512-GPm/Dbvk5RLmhRnxXIa7nTpK0xtl4E0wj0MslsuNiJ1FIROU+2+9lgUC/dgF7Ey4QCWhfEsgxilMRMCdHPfDfw==,
+      }
+
+  "@prettier/plugin-xml@3.4.2":
+    resolution:
+      {
+        integrity: sha512-/UyNlHfkuLXG6Ed85KB0WBF283xn2yavR+UtRibBRUcvEJId2DSLdGXwJ/cDa1X++SWDPzq3+GSFniHjkNy7yg==,
+      }
+    peerDependencies:
+      prettier: ^3.0.0
+
+  "@reteps/dockerfmt-darwin-arm64@0.5.4":
+    resolution:
+      {
+        integrity: sha512-urMqV+dQyvVI8/WrXwClX9e1PEyS35wFdwJjpZYmL09AkV4Io5U1oam8UBKK7jZk0+YsdF88ay6e86Kn6DIyQg==,
+      }
+    cpu: [arm64]
+    os: [darwin]
+
+  "@reteps/dockerfmt-darwin-x64@0.5.4":
+    resolution:
+      {
+        integrity: sha512-fJORy6DFxbgDiMqxpLTPZlb5KUY0Vq0iR4NGnyKnuYZ9LdZUS508DK2kt/AJ87/jIKNV1qRG0JXG1Tc6xdvWjw==,
+      }
+    cpu: [x64]
+    os: [darwin]
+
+  "@reteps/dockerfmt-linux-arm64@0.5.4":
+    resolution:
+      {
+        integrity: sha512-6pVakO06eXtDuvxy1Dnjs/gQyUoGGycle8PRSt5IFRwLi/AVaOQwfkfmW0WP8VH9wNUeti6BfJ3ksTn2G+XMxg==,
+      }
+    cpu: [arm64]
+    os: [linux]
+
+  "@reteps/dockerfmt-linux-x64@0.5.4":
+    resolution:
+      {
+        integrity: sha512-OD6SIlUV1D4TgJoTui3FMBAZsGbTSPYsiT0BKhD6jMUcJb3GpFTa7dY9rL8rP9FUqfL7OTHVUGUOL4Rh64Olog==,
+      }
+    cpu: [x64]
+    os: [linux]
+
+  "@reteps/dockerfmt@0.5.4":
+    resolution:
+      {
+        integrity: sha512-HEGgXVVOb+JtGUSSzXl/XPKFIZjMDTUoHarCjaQdkY+cb5M9K/O3b5xm+x0IPIk3SfHurbc0bSgcFsQlzjitxA==,
+      }
+    engines: { node: ^v12.20.0 || ^14.13.0 || >=16.0.0 }
+    hasBin: true
+
+  "@varlock/native-helper-darwin@1.24.0":
+    resolution:
+      {
+        integrity: sha512-/uMRBzTZxdtlwyszdPbamFojDfRQYTNY0l20SoX8UoTXrI+Kq7B3tt2ZDP0WfOhb9EAP1egAewBuGLj8NzemMQ==,
+      }
+    os: [darwin]
+
+  "@varlock/native-helper-linux-arm64@1.24.0":
+    resolution:
+      {
+        integrity: sha512-o2cMTiRtFNMNijxQxb8I7L6aQnEOTxB4QKYIZKAqbjoUCAFhStCwl1n2hj1J/rvCegSSaJT040T7r4culNZEqg==,
+      }
+    cpu: [arm64]
+    os: [linux]
+
+  "@varlock/native-helper-linux-x64@1.24.0":
+    resolution:
+      {
+        integrity: sha512-gToIgVYiYBf5rEdgM2nUV+r/5pPdQWZu6/GW4uZQqYQ0ApRL3ZTPXF2D9FWnDXDhI5CyXnckxokzP5azcSRDBA==,
+      }
+    cpu: [x64]
+    os: [linux]
+
+  "@varlock/native-helper-win32-x64@1.24.0":
+    resolution:
+      {
+        integrity: sha512-qudkH54KfX8dBmsQyAlC8BYlPwrxF0Drg6q4MHHVC7l7taTClYNqf6M6xRdIoNynyPDKTTPNjpOvoHwvRanEpg==,
+      }
+    os: [win32, linux]
+
+  "@xml-tools/parser@1.0.12":
+    resolution:
+      {
+        integrity: sha512-YNIPbmr/7ClPpWyk0MLImLBLyVLgW+BeOkbd4UDp8w0tCcgU8lmA4karXBF9EQwaQzDTzaBbJtmSA0G2NKKlPA==,
+      }
+
+  balanced-match@4.0.4:
+    resolution:
+      {
+        integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==,
+      }
+    engines: { node: 18 || 20 || >=22 }
+
+  brace-expansion@5.0.13:
+    resolution:
+      {
+        integrity: sha512-Vh3dmFbc4wZeox7M9I/0L9GfFd83Su4+yCck/OF9Gi/P/dAHn0RT7X4K9R7gMNMhDck3DvhR6QXsnQdjjgwNvQ==,
+      }
+    engines: { node: 20 || >=22 }
+
+  chevrotain@7.1.1:
+    resolution:
+      {
+        integrity: sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==,
+      }
+
+  cross-env@10.1.0:
+    resolution:
+      {
+        integrity: sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw==,
+      }
+    engines: { node: ">=20" }
+    hasBin: true
+
+  cross-spawn@7.0.6:
+    resolution:
+      {
+        integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==,
+      }
+    engines: { node: ">= 8" }
+
+  glob@14.0.5:
+    resolution:
+      {
+        integrity: sha512-nbKW5Sl53DEM5PkmZ5Jwfeyss1ohuqcgOBjOarSjz1fp8W4ss4EOOvKADQRbApD6JmVBX+HkpZYfBez4wXbeQQ==,
+      }
+    engines: { node: 18 || 20 || >=22 }
+
+  imurmurhash@0.1.4:
+    resolution:
+      {
+        integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==,
+      }
+    engines: { node: ">=0.8.19" }
+
+  isexe@2.0.0:
+    resolution:
+      {
+        integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==,
+      }
+
+  lru-cache@11.5.3:
+    resolution:
+      {
+        integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==,
+      }
+    engines: { node: 20 || >=22 }
+
+  minimatch@11.0.8:
+    resolution:
+      {
+        integrity: sha512-nFQuYSTVrGvysVBps5Ih+0BdnYFN/Cj3C816r6+p7yK+FHrVLGE4O4N9AFwykrlNlvM2HYt+Rad1Uiro6h88Ig==,
+      }
+    engines: { node: 20 || >=22 }
+
+  minipass@7.1.3:
+    resolution:
+      {
+        integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==,
+      }
+    engines: { node: ">=16 || 14 >=14.17" }
+
+  package-json-from-dist@1.0.1:
+    resolution:
+      {
+        integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==,
+      }
+
+  path-key@3.1.1:
+    resolution:
+      {
+        integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==,
+      }
+    engines: { node: ">=8" }
+
+  path-scurry@3.0.0:
+    resolution:
+      {
+        integrity: sha512-1pTbQqH1wIwMi/eleQ5leFTTCkzFsPcgXNjwOA8YGGW/W4/kHT3dssE7Z6NH+zuqNLOzOB0uaD61yl7cAcVhgg==,
+      }
+    engines: { node: 18 || 20 || >=22 }
+
+  prettier-plugin-nginx@2.0.0:
+    resolution:
+      {
+        integrity: sha512-fdSsnlYu1CyVrKNgOjEihIJ/32vdwCR3OOUfYCJ+S/phdzmML97Z6VC5KKHlUWRtzGU2Z2juQOdRMyG0QeO0Ng==,
+      }
+    engines: { node: ">=18" }
+    peerDependencies:
+      prettier: ^3.6.0
+
+  prettier-plugin-sh@0.20.2:
+    resolution:
+      {
+        integrity: sha512-4QVyY7Vav0f5i6AVa80SFwUJXaWsAv9t0yUZIivwI0ucxTei6Jwhso/khWqaKDj4QGdwjP2py1nxQrDUeZ0jyQ==,
+      }
+    engines: { node: ">=16.0.0" }
+    peerDependencies:
+      prettier: ^3.6.0
+
+  prettier@3.10.0:
+    resolution:
+      {
+        integrity: sha512-mBi4765LgjO1PFjlEs7pUeK0nb1bw71c+N4/ItfeUWNdY5cV2pRKaFpbbFRYmDJMO+5ZwzGxHRqHxFZna7iv5w==,
+      }
+    engines: { node: ">=14" }
+    hasBin: true
+
+  regexp-to-ast@0.5.0:
+    resolution:
+      {
+        integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==,
+      }
+
+  rimraf@6.1.4:
+    resolution:
+      {
+        integrity: sha512-Fk3reQDVPZUMbEm7Zwxz03BWQMW3V5buSk9aU8OckTrO8A1nQtbqvYsAantGNermwsIsXcuOBqcoJ3HuMELctw==,
+      }
+    engines: { node: 20 || >=22 }
+    hasBin: true
+
+  sh-syntax@0.7.0:
+    resolution:
+      {
+        integrity: sha512-sgMyAxpHiGgAaNg+gD3ad41vha24CzIjjghD4mdiON1lUafZPLJNYknyjcXmU4geilPstd69zCKkpccY0YvajA==,
+      }
+    engines: { node: ">=16.0.0" }
+
+  shebang-command@2.0.0:
+    resolution:
+      {
+        integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==,
+      }
+    engines: { node: ">=8" }
+
+  shebang-regex@3.0.0:
+    resolution:
+      {
+        integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==,
+      }
+    engines: { node: ">=8" }
+
+  signal-exit@4.1.0:
+    resolution:
+      {
+        integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==,
+      }
+    engines: { node: ">=14" }
+
+  undici@6.29.1:
+    resolution:
+      {
+        integrity: sha512-EvRlUt/QqAEvXdQeRMYUfwOQsfzpDztykrG2owGEE/rBOBoYv9uF39ZzsNDh4lTFHhTr2XOZjKkYgueD12ZmGA==,
+      }
+    engines: { node: ">=18.17" }
+
+  varlock@1.24.0:
+    resolution:
+      {
+        integrity: sha512-BSns65LcQUfW8jzx/4wKfL7CYlfEzK8YwhGBS5OOzzmAyK/zooNCERvDhnjVOcFqWDcZVBSxB3tmo1FWeHRqMA==,
+      }
+    engines: { bun: ">=1.3.3", node: ">=22.3.0" }
+    hasBin: true
+
+  which@2.0.2:
+    resolution:
+      {
+        integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==,
+      }
+    engines: { node: ">= 8" }
+    hasBin: true
+
+  write-file-atomic@5.0.1:
+    resolution:
+      {
+        integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==,
+      }
+    engines: { node: ^14.17.0 || ^16.13.0 || >=18.0.0 }
+
+  yocto-spinner@1.2.2:
+    resolution:
+      {
+        integrity: sha512-DODGl1wJjA/s5pnJFKau9lIYHT81lnhob1i3e1TjxZRxEhWRKl74nTbWE6H5KlkViQQTo/Z29YFdxzTZAMY3ng==,
+      }
+    engines: { node: ">=18.19" }
+
+  yoctocolors@2.2.0:
+    resolution:
+      {
+        integrity: sha512-xYqdZFUK/VYazNl/oCDYN+3WloWQwMfZxBoiNt6qNyk+xfOdi598muWE42rNZFp1kNOiqW936q5RhUdnpqElSg==,
+      }
+    engines: { node: ">=18" }
+
+snapshots:
+  "@dotenvx/dotenvx@2.38.2":
+    dependencies:
+      "@dotenvx/primitives": 3.3.1
+      "@dotenvx/providers": 0.3.13
+      "@dotenvx/tooling": 1.0.6
+      undici: 6.29.1
+      write-file-atomic: 5.0.1
+      yocto-spinner: 1.2.2
+
+  "@dotenvx/primitives@3.3.1": {}
+
+  "@dotenvx/primitives@4.4.0": {}
+
+  "@dotenvx/providers@0.3.13":
+    dependencies:
+      "@dotenvx/primitives": 4.4.0
+      "@dotenvx/tooling": 1.0.6
+
+  "@dotenvx/tooling@1.0.6": {}
+
+  "@epic-web/invariant@1.0.0": {}
+
+  "@isaacs/nonrecursive-glob-match@1.1.0": {}
+
+  "@prettier/plugin-xml@3.4.2(prettier@3.10.0)":
+    dependencies:
+      "@xml-tools/parser": 1.0.12
+      prettier: 3.10.0
+
+  "@reteps/dockerfmt-darwin-arm64@0.5.4":
+    optional: true
+
+  "@reteps/dockerfmt-darwin-x64@0.5.4":
+    optional: true
+
+  "@reteps/dockerfmt-linux-arm64@0.5.4":
+    optional: true
+
+  "@reteps/dockerfmt-linux-x64@0.5.4":
+    optional: true
+
+  "@reteps/dockerfmt@0.5.4":
+    optionalDependencies:
+      "@reteps/dockerfmt-darwin-arm64": 0.5.4
+      "@reteps/dockerfmt-darwin-x64": 0.5.4
+      "@reteps/dockerfmt-linux-arm64": 0.5.4
+      "@reteps/dockerfmt-linux-x64": 0.5.4
+
+  "@varlock/native-helper-darwin@1.24.0":
+    optional: true
+
+  "@varlock/native-helper-linux-arm64@1.24.0":
+    optional: true
+
+  "@varlock/native-helper-linux-x64@1.24.0":
+    optional: true
+
+  "@varlock/native-helper-win32-x64@1.24.0":
+    optional: true
+
+  "@xml-tools/parser@1.0.12":
+    dependencies:
+      chevrotain: 7.1.1
+
+  balanced-match@4.0.4: {}
+
+  brace-expansion@5.0.13:
+    dependencies:
+      balanced-match: 4.0.4
+
+  chevrotain@7.1.1:
+    dependencies:
+      regexp-to-ast: 0.5.0
+
+  cross-env@10.1.0:
+    dependencies:
+      "@epic-web/invariant": 1.0.0
+      cross-spawn: 7.0.6
+
+  cross-spawn@7.0.6:
+    dependencies:
+      path-key: 3.1.1
+      shebang-command: 2.0.0
+      which: 2.0.2
+
+  glob@14.0.5:
+    dependencies:
+      minimatch: 11.0.8
+      minipass: 7.1.3
+      path-scurry: 3.0.0
+
+  imurmurhash@0.1.4: {}
+
+  isexe@2.0.0: {}
+
+  lru-cache@11.5.3: {}
+
+  minimatch@11.0.8:
+    dependencies:
+      "@isaacs/nonrecursive-glob-match": 1.1.0
+      brace-expansion: 5.0.13
+
+  minipass@7.1.3: {}
+
+  package-json-from-dist@1.0.1: {}
+
+  path-key@3.1.1: {}
+
+  path-scurry@3.0.0:
+    dependencies:
+      lru-cache: 11.5.3
+      minipass: 7.1.3
+
+  prettier-plugin-nginx@2.0.0(prettier@3.10.0):
+    dependencies:
+      prettier: 3.10.0
+
+  prettier-plugin-sh@0.20.2(prettier@3.10.0):
+    dependencies:
+      "@reteps/dockerfmt": 0.5.4
+      prettier: 3.10.0
+      sh-syntax: 0.7.0
+
+  prettier@3.10.0: {}
+
+  regexp-to-ast@0.5.0: {}
+
+  rimraf@6.1.4:
+    dependencies:
+      glob: 14.0.5
+      package-json-from-dist: 1.0.1
+
+  sh-syntax@0.7.0: {}
+
+  shebang-command@2.0.0:
+    dependencies:
+      shebang-regex: 3.0.0
+
+  shebang-regex@3.0.0: {}
+
+  signal-exit@4.1.0: {}
+
+  undici@6.29.1: {}
+
+  varlock@1.24.0:
+    optionalDependencies:
+      "@varlock/native-helper-darwin": 1.24.0
+      "@varlock/native-helper-linux-arm64": 1.24.0
+      "@varlock/native-helper-linux-x64": 1.24.0
+      "@varlock/native-helper-win32-x64": 1.24.0
+
+  which@2.0.2:
+    dependencies:
+      isexe: 2.0.0
+
+  write-file-atomic@5.0.1:
+    dependencies:
+      imurmurhash: 0.1.4
+      signal-exit: 4.1.0
+
+  yocto-spinner@1.2.2:
+    dependencies:
+      yoctocolors: 2.2.0
+
+  yoctocolors@2.2.0: {}

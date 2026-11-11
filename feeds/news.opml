@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<opml version="2.0">
+  <head>
+    <title>Newsroom — Curated RSS Starter Pack</title>
+    <dateCreated>Wed, 11 Nov 2026 07:30:00 +0100</dateCreated>
+  </head>
+  <body>
+    <outline text="World news / baseline" title="World news / baseline">
+      <outline
+        type="rss"
+        text="BBC World"
+        title="BBC World"
+        xmlUrl="https://feeds.bbci.co.uk/news/world/rss.xml"
+        htmlUrl="https://www.bbc.com/news/world"
+      />
+      <outline
+        type="rss"
+        text="Associated Press (via Flipboard)"
+        title="Associated Press (via Flipboard)"
+        xmlUrl="https://flipboard.com/@associatedpress/top-stories-u7govdf1z.rss"
+        htmlUrl="https://apnews.com/"
+      />
+      <outline
+        type="rss"
+        text="Reuters (via Google News)"
+        title="Reuters (via Google News)"
+        xmlUrl="https://news.google.com/rss/search?q=when:24h+site:reuters.com&amp;hl=en-US&amp;gl=US&amp;ceid=US:en"
+        htmlUrl="https://www.reuters.com/"
+      />
+    </outline>
+    <outline text="Left / progressive" title="Left / progressive">
+      <outline
+        type="rss"
+        text="Guardian US"
+        title="Guardian US"
+        xmlUrl="https://www.theguardian.com/us-news/rss"
+        htmlUrl="https://www.theguardian.com/us-news"
+      />
+      <outline
+        type="rss"
+        text="Democracy Now!"
+        title="Democracy Now!"
+        xmlUrl="https://www.democracynow.org/democracynow.rss"
+        htmlUrl="https://www.democracynow.org/"
+      />
+      <outline
+        type="rss"
+        text="Mother Jones"
+        title="Mother Jones"
+        xmlUrl="https://www.motherjones.com/feed/"
+        htmlUrl="https://www.motherjones.com/"
+      />
+    </outline>
+    <outline text="Conservative / right" title="Conservative / right">
+      <outline
+        type="rss"
+        text="National Review"
+        title="National Review"
+        xmlUrl="https://www.nationalreview.com/feed/"
+        htmlUrl="https://www.nationalreview.com/"
+      />
+      <outline
+        type="rss"
+        text="The Dispatch"
+        title="The Dispatch"
+        xmlUrl="https://thedispatch.com/feed/"
+        htmlUrl="https://thedispatch.com/"
+      />
+      <outline
+        type="rss"
+        text="Fox News Politics"
+        title="Fox News Politics"
+        xmlUrl="https://moxie.foxnews.com/google-publisher/politics.xml"
+        htmlUrl="https://www.foxnews.com/politics"
+      />
+      <outline
+        type="rss"
+        text="The Bulwark (center-right / anti-Trump)"
+        title="The Bulwark (center-right / anti-Trump)"
+        xmlUrl="https://www.thebulwark.com/feed"
+        htmlUrl="https://www.thebulwark.com/"
+      />
+    </outline>
+    <outline text="Environment &amp; science" title="Environment &amp; science">
+      <outline
+        type="rss"
+        text="Grist"
+        title="Grist"
+        xmlUrl="https://grist.org/feed/"
+        htmlUrl="https://grist.org/"
+      />
+      <outline
+        type="rss"
+        text="Inside Climate News"
+        title="Inside Climate News"
+        xmlUrl="https://insideclimatenews.org/feed/"
+        htmlUrl="https://insideclimatenews.org/"
+      />
+      <outline
+        type="rss"
+        text="Yale Environment 360"
+        title="Yale Environment 360"
+        xmlUrl="https://e360.yale.edu/feed.xml"
+        htmlUrl="https://e360.yale.edu/"
+      />
+      <outline
+        type="rss"
+        text="Mongabay"
+        title="Mongabay"
+        xmlUrl="https://news.mongabay.com/feed/"
+        htmlUrl="https://news.mongabay.com/"
+      />
+      <outline
+        type="rss"
+        text="ScienceDaily: Top Science"
+        title="ScienceDaily: Top Science"
+        xmlUrl="https://www.sciencedaily.com/rss/top/science.xml"
+        htmlUrl="https://www.sciencedaily.com/"
+      />
+      <outline
+        type="rss"
+        text="Quanta Magazine"
+        title="Quanta Magazine"
+        xmlUrl="https://www.quantamagazine.org/feed/"
+        htmlUrl="https://www.quantamagazine.org/"
+      />
+    </outline>
+    <outline text="Coding &amp; engineering" title="Coding &amp; engineering">
+      <outline
+        type="rss"
+        text="TLDR Tech"
+        title="TLDR Tech"
+        xmlUrl="https://tldr.tech/api/rss/tech"
+        htmlUrl="https://tldr.tech/"
+      />
+      <outline
+        type="rss"
+        text="TLDR Web Dev"
+        title="TLDR Web Dev"
+        xmlUrl="https://tldr.tech/api/rss/webdev"
+        htmlUrl="https://tldr.tech/"
+      />
+      <outline
+        type="rss"
+        text="TLDR DevOps"
+        title="TLDR DevOps"
+        xmlUrl="https://tldr.tech/api/rss/devops"
+        htmlUrl="https://tldr.tech/"
+      />
+      <outline
+        type="rss"
+        text="Hacker News"
+        title="Hacker News"
+        xmlUrl="https://news.ycombinator.com/rss"
+        htmlUrl="https://news.ycombinator.com/"
+      />
+      <outline
+        type="rss"
+        text="Lobsters Go"
+        title="Lobsters Go"
+        xmlUrl="https://lobste.rs/t/go.rss"
+        htmlUrl="https://lobste.rs/t/go"
+      />
+      <outline
+        type="rss"
+        text="Ars Technica"
+        title="Ars Technica"
+        xmlUrl="https://feeds.arstechnica.com/arstechnica/index"
+        htmlUrl="https://arstechnica.com/"
+      />
+    </outline>
+    <outline text="Artificial intelligence" title="Artificial intelligence">
+      <outline
+        type="rss"
+        text="TLDR AI"
+        title="TLDR AI"
+        xmlUrl="https://tldr.tech/api/rss/ai"
+        htmlUrl="https://tldr.tech/ai"
+      />
+      <outline
+        type="rss"
+        text="Simon Willison"
+        title="Simon Willison"
+        xmlUrl="https://simonwillison.net/atom/everything/"
+        htmlUrl="https://simonwillison.net/"
+      />
+      <outline
+        type="rss"
+        text="MIT Technology Review AI"
+        title="MIT Technology Review AI"
+        xmlUrl="https://www.technologyreview.com/topic/artificial-intelligence/feed/"
+        htmlUrl="https://www.technologyreview.com/topic/artificial-intelligence/"
+      />
+      <outline
+        type="rss"
+        text="OpenAI News"
+        title="OpenAI News"
+        xmlUrl="https://openai.com/news/rss.xml"
+        htmlUrl="https://openai.com/news/"
+      />
+      <outline
+        type="rss"
+        text="Google DeepMind"
+        title="Google DeepMind"
+        xmlUrl="https://deepmind.google/blog/rss.xml"
+        htmlUrl="https://deepmind.google/"
+      />
+    </outline>
+    <outline
+      text="Home automation &amp; self-hosting"
+      title="Home automation &amp; self-hosting"
+    >
+      <outline
+        type="rss"
+        text="Home Assistant Blog"
+        title="Home Assistant Blog"
+        xmlUrl="https://www.home-assistant.io/atom.xml"
+        htmlUrl="https://www.home-assistant.io/blog/"
+      />
+      <outline
+        type="rss"
+        text="SmartHomeScene"
+        title="SmartHomeScene"
+        xmlUrl="https://smarthomescene.com/feed/"
+        htmlUrl="https://smarthomescene.com/"
+      />
+      <outline
+        type="rss"
+        text="selfh.st"
+        title="selfh.st"
+        xmlUrl="https://selfh.st/rss/"
+        htmlUrl="https://selfh.st/"
+      />
+      <outline
+        type="rss"
+        text="Hackaday"
+        title="Hackaday"
+        xmlUrl="https://hackaday.com/blog/feed/"
+        htmlUrl="https://hackaday.com/"
+      />
+      <outline
+        type="rss"
+        text="Zigbee2MQTT releases"
+        title="Zigbee2MQTT releases"
+        xmlUrl="https://github.com/Koenkk/zigbee2mqtt/releases.atom"
+        htmlUrl="https://github.com/Koenkk/zigbee2mqtt/releases"
+      />
+      <outline
+        type="rss"
+        text="Home Assistant core releases"
+        title="Home Assistant core releases"
+        xmlUrl="https://github.com/home-assistant/core/releases.atom"
+        htmlUrl="https://github.com/home-assistant/core/releases"
+      />
+    </outline>
+    <outline text="Off-grid energy" title="Off-grid energy">
+      <outline
+        type="rss"
+        text="Low-tech Magazine"
+        title="Low-tech Magazine"
+        xmlUrl="https://solar.lowtechmagazine.com/feeds/all.rss.xml"
+        htmlUrl="https://solar.lowtechmagazine.com/"
+      />
+      <outline
+        type="rss"
+        text="pv magazine USA"
+        title="pv magazine USA"
+        xmlUrl="https://pv-magazine-usa.com/feed/"
+        htmlUrl="https://pv-magazine-usa.com/"
+      />
+      <outline
+        type="rss"
+        text="Solar Power World"
+        title="Solar Power World"
+        xmlUrl="https://www.solarpowerworldonline.com/feed/"
+        htmlUrl="https://www.solarpowerworldonline.com/"
+      />
+      <outline
+        type="rss"
+        text="Off Grid World"
+        title="Off Grid World"
+        xmlUrl="https://offgridworld.com/feed/"
+        htmlUrl="https://offgridworld.com/"
+      />
+    </outline>
+    <outline text="Gardening &amp; crops" title="Gardening &amp; crops">
+      <outline
+        type="rss"
+        text="Epic Gardening"
+        title="Epic Gardening"
+        xmlUrl="https://www.epicgardening.com/feed/"
+        htmlUrl="https://www.epicgardening.com/"
+      />
+      <outline
+        type="rss"
+        text="Gardener’s Path"
+        title="Gardener’s Path"
+        xmlUrl="https://gardenerspath.com/feed/"
+        htmlUrl="https://gardenerspath.com/"
+      />
+      <outline
+        type="rss"
+        text="Homestead and Chill"
+        title="Homestead and Chill"
+        xmlUrl="https://homesteadandchill.com/feed/"
+        htmlUrl="https://homesteadandchill.com/"
+      />
+    </outline>
+    <outline
+      text="Survival &amp; self-reliance"
+      title="Survival &amp; self-reliance"
+    >
+      <outline
+        type="rss"
+        text="Practical Self Reliance"
+        title="Practical Self Reliance"
+        xmlUrl="https://practicalselfreliance.com/feed/"
+        htmlUrl="https://practicalselfreliance.com/"
+      />
+      <outline
+        type="rss"
+        text="Backwoods Home"
+        title="Backwoods Home"
+        xmlUrl="https://www.backwoodshome.com/feed/"
+        htmlUrl="https://www.backwoodshome.com/"
+      />
+      <outline
+        type="rss"
+        text="SurvivalBlog"
+        title="SurvivalBlog"
+        xmlUrl="https://survivalblog.com/feed/"
+        htmlUrl="https://survivalblog.com/"
+      />
+    </outline>
+  </body>
+</opml>
