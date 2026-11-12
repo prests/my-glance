@@ -24,7 +24,7 @@ The deployment workflow copies only Compose and Nginx configuration into `~/glan
 
 The deployment exposes only `https://news.byte-cave.com/feeds/news.opml`. It is a static export of the public feed list and does not require dashboard authentication.
 
-Terraform manages Cloudflare caching, rate limiting, port restrictions, and response security headers. The cache rule matches only the public OPML feed:
+Terraform manages Cloudflare caching, rate limiting, port restrictions, and response security headers. The cache rule stores the public OPML feed for 30 minutes and matches only that route:
 
 ```text
 http.host eq "news.byte-cave.com" and http.request.uri.path eq "/feeds/news.opml"
