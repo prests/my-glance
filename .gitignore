@@ -3,3 +3,8 @@
 !.env.schema
 .deploy/
 node_modules/
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform/backend.hcl
+terraform/tfplan

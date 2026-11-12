@@ -20,6 +20,41 @@ The deployment workflow copies only Compose and Nginx configuration into `~/glan
 3. Leave the public DNS record Cloudflare-managed. The VM needs no public HTTP/HTTPS listener.
 4. The Nginx configuration replaces all incoming `X-Forwarded-For` values with Cloudflare's `CF-Connecting-IP`. This is required because Glance trusts `X-Forwarded-For` for its failed-login block list. Do not point the tunnel directly at Glance or publish Glance's port.
 
+### Public OPML feed
+
+The deployment exposes only `https://news.byte-cave.com/feeds/news.opml`. It is a static export of the public feed list and does not require dashboard authentication.
+
+Terraform manages Cloudflare caching and rate limiting. The cache rule matches only the public OPML feed:
+
+```text
+http.host eq "news.byte-cave.com" and http.request.uri.path eq "/feeds/news.opml"
+```
+
+The rate-limit rule matches the entire `news.byte-cave.com` subdomain, but cannot match another hostname:
+
+```text
+http.host eq "news.byte-cave.com"
+```
+
+The rate limit is 60 requests per minute per IP, blocking that IP for one minute. The cache rule has a one-day edge TTL and removes query strings from the cache key.
+
+### Terraform setup
+
+1. In Cloudflare R2, create a bucket named `my-glance-terraform-state`. Terraform state is stored there; do not commit state files.
+2. Create an R2 API token scoped to that bucket with **Object Read & Write** access, then create its S3 API credentials.
+3. Create a separate Cloudflare API token for Terraform. Grant **Zone: Cache Rules: Edit** and **Zone: WAF: Edit** for only `byte-cave.com`, plus the required **Account: Account Rulesets: Edit** and **Account: Account Filter Lists: Edit** permissions. Do not use the global API key.
+4. In the GitHub `production` Environment, add these secrets:
+   - `CLOUDFLARE_API_TOKEN`
+   - `R2_ACCESS_KEY_ID`
+   - `R2_SECRET_ACCESS_KEY`
+5. In the same environment, add these variables:
+   - `CLOUDFLARE_ACCOUNT_ID`
+   - `CLOUDFLARE_ZONE_ID` — the ID for the `byte-cave.com` zone
+   - `TF_STATE_BUCKET` — `my-glance-terraform-state`
+6. Run **Terraform** with `plan`, inspect the output, then rerun it with `apply`.
+
+A zone can have only one entry-point ruleset for each of these phases. If `byte-cave.com` already has cache or rate-limit rules, import and manage the existing phase ruleset before applying; otherwise Terraform could conflict with rules outside this project. The cache rule remains restricted to the exact hostname and path above; the rate limit applies only to `news.byte-cave.com`.
+
 ## GitHub setup
 
 Create a repository Environment named `production` without required reviewers. Add these **Environment secrets** after VPS setup:
