@@ -6,7 +6,6 @@ variable "cloudflare_zone_id" {
 locals {
   opml_feed_expression            = "(http.host eq \"news.byte-cave.com\" and http.request.uri.path eq \"/feeds/news.opml\")"
   news_subdomain_expression       = "(http.host eq \"news.byte-cave.com\")"
-  news_https_expression           = "(http.host eq \"news.byte-cave.com\" and http.request.scheme eq \"https\")"
   news_disallowed_port_expression = "(http.host eq \"news.byte-cave.com\" and not cf.edge.server_port in {80 443})"
 }
 
@@ -35,7 +34,7 @@ resource "cloudflare_ruleset" "news_subdomain_security_headers" {
   rules = [{
     ref         = "set_news_subdomain_security_headers"
     description = "Set transport, framing, MIME, and referrer protections."
-    expression  = local.news_https_expression
+    expression  = local.news_subdomain_expression
     action      = "rewrite"
 
     action_parameters = {

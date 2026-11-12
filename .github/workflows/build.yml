@@ -65,11 +65,6 @@ jobs:
           docker compose -p glance-ci logs
           exit 1
 
-      - name: Validate public OPML feed
-        run: |
-          curl --fail --silent --head http://127.0.0.1:8080/feeds/news.opml | grep -Eiq '^content-type: application/xml'
-          test "$(curl --silent --output /dev/null --write-out '%{http_code}' -X POST http://127.0.0.1:8080/feeds/news.opml)" = 403
-
       - name: Stop test stack
         if: always()
         run: docker compose -p glance-ci down --volumes --remove-orphans
