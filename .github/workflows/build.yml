@@ -1,8 +1,10 @@
 name: Build image
 
 on:
-  pull_request:
   push:
+    branches:
+      - main
+  pull_request:
 
 permissions:
   contents: read
@@ -35,6 +37,16 @@ jobs:
       - name: Check formatting
         run: pnpm run format:verify
 
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.10.5
+
+      - name: Validate Terraform configuration
+        run: |
+          terraform -chdir=terraform fmt -check
+          terraform -chdir=terraform init -backend=false
+          terraform -chdir=terraform validate
+
       - name: Validate Compose configuration
         run: docker compose -f compose.yaml config --quiet
 
@@ -52,6 +64,11 @@ jobs:
           done
           docker compose -p glance-ci logs
           exit 1
+
+      - name: Validate public OPML feed
+        run: |
+          curl --fail --silent --head http://127.0.0.1:8080/feeds/news.opml | grep -Eiq '^content-type: application/xml'
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' -X POST http://127.0.0.1:8080/feeds/news.opml)" = 403
 
       - name: Stop test stack
         if: always()

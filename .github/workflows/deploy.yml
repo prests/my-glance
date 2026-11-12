@@ -47,13 +47,16 @@ jobs:
 
       - name: Copy deployment configuration
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" 'mkdir -p ~/glance/config'
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" 'mkdir -p ~/glance/config ~/glance/feeds'
           scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes \
             compose.yaml compose.production.yaml \
             "$DEPLOY_USER@$DEPLOY_HOST:~/glance/"
           scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes \
             config/nginx.conf \
             "$DEPLOY_USER@$DEPLOY_HOST:~/glance/config/nginx.conf"
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes \
+            feeds/news.opml \
+            "$DEPLOY_USER@$DEPLOY_HOST:~/glance/feeds/news.opml"
 
       - name: Deploy the existing immutable image
         run: |

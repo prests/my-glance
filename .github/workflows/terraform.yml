@@ -1,0 +1,58 @@
+name: Terraform
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Terraform action to run
+        required: true
+        default: plan
+        type: choice
+        options:
+          - plan
+          - apply
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-rules
+  cancel-in-progress: false
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_ZONE_ID: ${{ vars.CLOUDFLARE_ZONE_ID }}
+      TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.10.5
+
+      - name: Initialize Terraform
+        run: |
+          cat > terraform/backend.hcl <<EOF
+          bucket = "$TF_STATE_BUCKET"
+          endpoints = {
+            s3 = "https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com"
+          }
+          EOF
+          terraform -chdir=terraform init -reconfigure -backend-config=backend.hcl
+          rm terraform/backend.hcl
+
+      - name: Plan Cloudflare rules
+        run: |
+          terraform -chdir=terraform plan -out=tfplan \
+            -var="cloudflare_zone_id=$CLOUDFLARE_ZONE_ID"
+
+      - name: Apply Cloudflare rules
+        if: inputs.action == 'apply'
+        run: terraform -chdir=terraform apply -auto-approve tfplan
