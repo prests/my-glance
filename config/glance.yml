@@ -6,6 +6,12 @@
 server:
   proxied: true
 
+document:
+  head: |
+    <style>
+      .theme-preset[data-key="default-light"] { display: none; }
+    </style>
+
 auth:
   secret-key: ${secret:glance_auth_secret_key}
   users:
