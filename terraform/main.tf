@@ -108,12 +108,12 @@ resource "cloudflare_ruleset" "news_subdomain_rate_limit" {
 
   rules = [{
     ref         = "rate_limit_news_subdomain"
-    description = "Block an IP after 60 news subdomain requests in one minute."
+    description = "Block an IP after 60 news subdomain requests in 10 seconds."
     expression  = local.news_subdomain_expression
     action      = "block"
     ratelimit = {
       characteristics     = ["cf.colo.id", "ip.src"]
-      period              = 60
+      period              = 10
       requests_per_period = 60
       mitigation_timeout  = 60
     }
