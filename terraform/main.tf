@@ -73,7 +73,7 @@ resource "cloudflare_ruleset" "opml_feed_cache" {
 
   rules = [{
     ref         = "cache_public_opml_feed"
-    description = "Cache the public OPML feed for one day without query strings."
+    description = "Cache the public OPML feed for 30 minutes without query strings."
     expression  = local.opml_feed_expression
     action      = "set_cache_settings"
 
@@ -81,7 +81,7 @@ resource "cloudflare_ruleset" "opml_feed_cache" {
       cache = true
       edge_ttl = {
         mode    = "override_origin"
-        default = 86400
+        default = 1800
       }
       browser_ttl = {
         mode = "respect_origin"
