@@ -36,7 +36,7 @@ The rate-limit and security-header rules match only `news.byte-cave.com`. The fi
 http.host eq "news.byte-cave.com" and not cf.edge.server_port in {80 443}
 ```
 
-The rate limit is 60 requests per 10 seconds per IP, blocking that IP for one minute. The cache rule has a one-day edge TTL and removes query strings from the cache key. HTTPS responses receive HSTS, clickjacking, MIME-sniffing, and referrer protections.
+The rate limit is 60 requests per 10 seconds per IP, blocking that IP for 10 seconds. The cache rule has a one-day edge TTL and removes query strings from the cache key. HTTPS responses receive HSTS, clickjacking, MIME-sniffing, and referrer protections.
 
 ### Terraform setup
 
